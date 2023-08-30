@@ -1,4 +1,3 @@
-# flake8: noqa
 import ast
 import os
 from dotenv import load_dotenv
@@ -8,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(override=True)
 
-SECRET_KEY = os.getenv('SECRET_KEY_KITTYGRAM')
+SECRET_KEY = os.getenv('SECRET_KEY_KITTYGRAM', default='test')
 
 DEBUG = os.getenv('DEBUG_KITTYGRAM')
 
