@@ -1,14 +1,23 @@
 # flake8: noqa
+import ast
 import os
+from dotenv import load_dotenv
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$'
+load_dotenv(override=True)
 
-DEBUG = True
+SECRET_KEY = os.getenv('SECRET_KEY_KITTYGRAM')
 
-ALLOWED_HOSTS = []
+DEBUG = os.getenv('DEBUG_KITTYGRAM')
+
+ALLOWED_HOSTS_LIST = os.getenv('ALLOWED_HOSTS_KITTYGRAM')
+
+if ALLOWED_HOSTS_LIST:
+    ALLOWED_HOSTS = ast.literal_eval(ALLOWED_HOSTS_LIST)
+else:
+    ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
