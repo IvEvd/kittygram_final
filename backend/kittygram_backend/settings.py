@@ -10,7 +10,9 @@ load_dotenv(override=True)
 
 SECRET_KEY = os.getenv('SECRET_KEY', default='test')
 
-DEBUG = os.getenv('DEBUG')
+DEBUG_ENV = os.getenv('DEBUG')
+
+DEBUG = DEBUG_ENV == 'True'
 
 ALLOWED_HOSTS_LIST = os.getenv('ALLOWED_HOSTS')
 
