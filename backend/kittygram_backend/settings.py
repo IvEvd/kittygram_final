@@ -1,4 +1,3 @@
-import ast
 import os
 
 from dotenv import load_dotenv
@@ -15,7 +14,7 @@ DEBUG = os.getenv('DEBUG') == 'True'
 ALLOWED_HOSTS_LIST = os.getenv('ALLOWED_HOSTS')
 
 if ALLOWED_HOSTS_LIST:
-    ALLOWED_HOSTS = ast.literal_eval(ALLOWED_HOSTS_LIST)
+    ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_LIST.split(',')]
 else:
     ALLOWED_HOSTS = []
 
